@@ -1,17 +1,15 @@
 import csv
-import numpy as np
-import random
-
-from tqdm import tqdm
-
 import heapq
+import random
+from collections import OrderedDict, defaultdict, deque
+
 from sortedcontainers import SortedDict
-from collections import defaultdict, deque, OrderedDict
+from tqdm import tqdm
 
 
 def get_sequence(filename, t1, t2):
-    min_offset = np.inf
-    max_offset = -np.inf
+    min_offset = float("inf")
+    max_offset = float("-inf")
     sequence = []
     with open(filename, "r") as file:
         reader = csv.reader(file)
@@ -697,27 +695,27 @@ def sim_nhit_lru(sequence, cache_size, insertion_threshold, trigger_threshold):
     )
 
 
-# Example usage
-filename = "A42.csv"
-sequence, cache_size = get_sequence(filename, 0, np.inf)
+if __name__ == "__main__":
+    import argparse
 
-print("FILENAME:", filename)
-print("Cache Size:", cache_size)
+    parser = argparse.ArgumentParser(
+        description="Simulate cache replacement policies on a block-level storage trace."
+    )
+    parser.add_argument("--file", default="A42.csv", help="Path to the trace CSV (default: %(default)s).")
+    parser.add_argument("--t1", type=float, default=0.0, help="Include requests with timestamp >= t1.")
+    parser.add_argument("--t2", type=float, default=float("inf"), help="Include requests with timestamp <= t2.")
+    parser.add_argument("--nhit-threshold", type=int, default=5, help="N-Hit admission threshold (default: %(default)s).")
+    parser.add_argument("--trigger", type=float, default=0.5, help="N-Hit trigger ratio (default: %(default)s).")
+    args = parser.parse_args()
 
-lru_results = sim_lru(sequence, cache_size)
-print("LRU Results:", lru_results)
+    sequence, cache_size = get_sequence(args.file, args.t1, args.t2)
 
-nhit_results = sim_nhit(sequence, cache_size, 5, 0.5)
-print("NHIT Results:", nhit_results)
+    print("FILENAME:", args.file)
+    print("Cache Size:", cache_size)
 
-nhit_lru_results = sim_nhit_lru(sequence, cache_size, 5, 0.5)
-print("NHIT-LRU Results:", nhit_lru_results)
-
-arc_results = sim_arc(sequence, cache_size)
-print("ARC Results:", arc_results)
-
-larc_results = sim_larc(sequence, cache_size)
-print("LARC Results:", larc_results)
-
-oracle_belady_results = sim_oracle_belady(sequence, cache_size)
-print("Belady Results:", oracle_belady_results)
+    print("LRU Results:", sim_lru(sequence, cache_size))
+    print("NHIT Results:", sim_nhit(sequence, cache_size, args.nhit_threshold, args.trigger))
+    print("NHIT-LRU Results:", sim_nhit_lru(sequence, cache_size, args.nhit_threshold, args.trigger))
+    print("ARC Results:", sim_arc(sequence, cache_size))
+    print("LARC Results:", sim_larc(sequence, cache_size))
+    print("Belady Results:", sim_oracle_belady(sequence, cache_size))
