@@ -26,3 +26,9 @@ pip install -r requirements.txt
 ## Input format
 
 Headerless CSV with eight columns: `timestamp, unused, offset, size, operation, unused, unused, unused`. The `offset` (column 2) is the cache key; `operation` (column 4) is `Read` or `Write`.
+
+## Documentation
+
+- [replacement-policies.pdf](docs/replacement-policies.pdf) — cache replacement policies
+- [locality-a1.pdf](docs/locality-a1.pdf), [locality-a2.pdf](docs/locality-a2.pdf), [locality-a3.pdf](docs/locality-a3.pdf) — locality
+- [reuse-distance.pdf](docs/reuse-distance.pdf) — reuse distance
