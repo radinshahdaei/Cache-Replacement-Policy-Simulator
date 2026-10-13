@@ -1,4 +1,4 @@
-# Cache Replacement Policy Simulator
+# Storage Trace Analysis
 
 **A trace-driven study of cache replacement policies, storage-trace locality, and reuse distance.**
 
@@ -39,7 +39,7 @@ The reuse (stack) distance of an access is the number of *distinct* offsets touc
 ## Repository structure
 
 ```text
-cache-replacement-policy-simulator/
+storage-trace-analysis/
 ├── simulate.py           # Trace loader + six replacement-policy simulators
 ├── locality.py           # Temporal and spatial locality analysis
 ├── reuse_distance.py     # Reuse (stack) distance histogram
@@ -54,8 +54,8 @@ cache-replacement-policy-simulator/
 Prerequisites: Python 3.9+ and `pip`.
 
 ```bash
-git clone https://github.com/radinshahdaei/Cache-Replacement-Policy-Simulator.git
-cd Cache-Replacement-Policy-Simulator
+git clone https://github.com/radinshahdaei/Storage-Trace-Analysis.git
+cd Storage-Trace-Analysis
 python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 unzip A42.zip                                          # Windows: Expand-Archive A42.zip -DestinationPath . -Force
