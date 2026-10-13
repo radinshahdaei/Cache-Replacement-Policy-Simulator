@@ -1,3 +1,6 @@
-numpy>=1.24
+# Core simulator dependencies
 sortedcontainers>=2.4.0
 tqdm>=4.66
+
+# Optional: reuse-distance plotting (reuse_distance.py --plot)
+matplotlib>=3.7
