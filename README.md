@@ -32,3 +32,7 @@ Headerless CSV with eight columns: `timestamp, unused, offset, size, operation, 
 - [replacement-policies.pdf](docs/replacement-policies.pdf) — cache replacement policies
 - [locality-a1.pdf](docs/locality-a1.pdf), [locality-a2.pdf](docs/locality-a2.pdf), [locality-a3.pdf](docs/locality-a3.pdf) — locality
 - [reuse-distance.pdf](docs/reuse-distance.pdf) — reuse distance
+
+## Archive
+
+Original source files are preserved in [`archive/`](archive/).
