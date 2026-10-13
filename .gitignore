@@ -1,14 +1,6 @@
-# Python
 __pycache__/
 *.py[cod]
 .venv/
 venv/
-
-# Extracted trace data (keep the archive A42.zip instead)
-A42.csv
-
-# Generated plots
 *.png
-
-# OS
 .DS_Store

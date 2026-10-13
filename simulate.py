@@ -701,7 +701,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Simulate cache replacement policies on a block-level storage trace."
     )
-    parser.add_argument("--file", default="A42.csv", help="Path to the trace CSV (default: %(default)s).")
+    parser.add_argument("--file", required=True, help="Path to the trace CSV.")
     parser.add_argument("--t1", type=float, default=0.0, help="Include requests with timestamp >= t1.")
     parser.add_argument("--t2", type=float, default=float("inf"), help="Include requests with timestamp <= t2.")
     parser.add_argument("--nhit-threshold", type=int, default=5, help="N-Hit admission threshold (default: %(default)s).")

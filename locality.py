@@ -142,7 +142,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Analyze temporal and spatial locality of a block-level storage trace."
     )
-    parser.add_argument("--file", default="A42.csv", help="Path to the trace CSV (default: %(default)s).")
+    parser.add_argument("--file", required=True, help="Path to the trace CSV.")
     parser.add_argument("--n-rows", type=int, default=None, help="Only read the first N rows (sample).")
     parser.add_argument("--split", choices=["read", "write", "total"], default="total",
                         help="Which request subset to analyze (default: %(default)s).")

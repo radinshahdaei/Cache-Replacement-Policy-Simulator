@@ -270,7 +270,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Compute the reuse (stack) distance histogram of a storage trace."
     )
-    parser.add_argument("--file", default="A42.csv", help="Path to the trace CSV (default: %(default)s).")
+    parser.add_argument("--file", required=True, help="Path to the trace CSV.")
     parser.add_argument("--n-rows", type=int, default=None, help="Only read the first N rows (sample).")
     parser.add_argument("--plot", default=None, help="Save a histogram plot to this PNG path.")
     args = parser.parse_args()
